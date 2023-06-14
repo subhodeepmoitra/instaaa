@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class like extends Model
+class dislike extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'postid',
-        'like',
+        'dislike',
         'username',
     ];
 
-    protected $table = 'likes';
+    protected $table = 'dislikes';
 }

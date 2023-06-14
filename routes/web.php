@@ -21,12 +21,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/like/{id}/{count}', [App\Http\Controllers\HomeController::class, 'like']);
+Route::get('/like/{postid}/{useremail}', [App\Http\Controllers\HomeController::class, 'like']);
+
+Route::get('/dislike/{postid}{useremail}', [App\Http\Controllers\HomeController::class, 'dislike']);
+
+//Route::get('/like/{id}/{count}', [App\Http\Controllers\HomeController::class, 'like']);
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile']);
 
 Route::get('/createPost', [App\Http\Controllers\ManagePostController::class, 'RendercreatePost'])->name('createPost');
 
-Route::post('/createPostStore', [App\Http\Controllers\ManagePostController::class, 'Store']);
+Route::post('/createPostStore', [App\Http\Controllers\ManagePostController::class, 'store']);
 
 

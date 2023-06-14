@@ -65,26 +65,42 @@
     </nav>
 
     {{-- Feed start --}}
-    @foreach ($posts as $feeds)
+    @foreach ($posts as $values)
+    
         <div class="card" style="width: 18rem;">
-            <img src="{{ url('storage/' . $feeds->post) }}" alt="post">
+            {{-- <img src="{{ url('storage/') }}{{ $values->post }}" alt="post"> --}}
+            {{--             @dd(storage_path('app/public/post'.{{$values->post}}))
+ --}}
+            {{--  @php
+     dd($values->post);
+ @endphp --}}
+            <img src="@isset($values->post)
+{{ url('storage/' . $values->post) }}
+ @endisset"
+                alt="">
             <div class="card-body">
-                <p class="card-text">{{ $feeds->description }}</p>
-                <a href="#" class="btn btn-light">{{ $feeds->username }}</a>
-                {{--           <a href="{{url('/like')}}" type="button" class="btn btn-success">Like</a>
- --}} <button type="button" id="like" onclick="like({{ $feeds->id }},1)">Like
-                    <span class="like-count-{{ $feeds->id }}">{{ $feeds->likes }}</span>
-                </button>
+                <p class="card-text">
 
-                <button type="button" id="dislike" style="display: none"
-                    onclick="like({{ $feeds->id }},-1)">Dislike
-                    <span class="like-count-{{ $feeds->id }}">{{ $feeds->likes }}</span>
-                </button>
+                    <span>Dislike</span>
 
+
+
+                    {{-- @if ($like->like == 0 && $like->dislike == 0) --}}
+                    {{--       <a href="{{ url('/like', ['postid' => $values->id, 'useremail' => Auth::user()->username]) }}"
+                    class="btn btn-success">Like</a> --}}
+                    {{-- @endif --}}
+
+                    {{-- @if ($like->like == 1 && $like->dislike == 0) --}}
+                    {{--     <a href="{{ url('/dislike', ['postid' => $values->id, 'useremail' => Auth::user()->username]) }}"
+                    class="btn btn-danger">Dislike</a> --}}
+                    {{-- @endif --}}
+
+                    {{-- @if ($like->like == 0 && $like->dislike == 1) --}}
+                </p>
             </div>
         </div>
     @endforeach
-    <script>
+    {{-- <script>
         function like(id, count) {
             $.get("{{ url('/like') }}/" + id + '/' + count, function(data, status) {
 
@@ -104,7 +120,7 @@
 
             });
         }
-    </script>
+    </script> --}}
 
     {{-- Feed ends --}}
 

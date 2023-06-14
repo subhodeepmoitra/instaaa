@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('userEmail')->default();
             $table->string('description')->default();
             $table->string('post')->string()->nullable();
+            $table->string('like')->default(0);
+            $table->string('dislike')->default(0);
             $table->timestamps();
         });
     }
